@@ -190,7 +190,7 @@ export default function Home() {
       </section>
 
       {/* 7. Who this is for / who it isn't */}
-      <section className="border-t border-surface-border bg-surface-alt py-20">
+      <section id="who-this-is-for" className="border-t border-surface-border bg-surface-alt py-20 scroll-mt-20">
         <Container>
           <h2 className="text-h1 font-heading font-semibold max-w-(--container-content)">
             Who this is for — and who it isn&apos;t

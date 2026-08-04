@@ -39,6 +39,18 @@ office / mailbox that accepts business mail. The `isPlaceholder: true` flag in
 
 ---
 
+## 1b. Operator bio specifics
+
+`/about` currently describes the six-lens approach and Angel Muro's general
+marketing background (lifecycle, growth, performance) without specific years,
+past employers, or credentials — none of those were confirmed, so none were
+invented. To fill it in, provide:
+
+- [ ] Specific prior roles/employers worth naming publicly
+- [ ] Years of relevant marketing experience, if you want a number stated
+- [ ] Any certifications or credentials
+- [ ] Headshot (see Images below)
+
 ## 2. Proof & case studies
 
 No case studies, testimonials, client names, logos, or performance metrics
