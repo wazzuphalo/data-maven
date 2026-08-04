@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="utf-8"><title>Form detection</title></head>
+<body>
+  <!--
+    Not a real page — never linked, never rendered to visitors.
+    Netlify's build-time crawler only detects forms present in static HTML.
+    The real contact form (src/app/contact/page.tsx) is statically rendered
+    and self-detects fine, but the mini-audit lead-capture field only
+    appears in the DOM after client-side interaction, so it's invisible to
+    the crawler at build time. This file gives Netlify a static copy of
+    every field either form can submit, so both are registered regardless
+    of how they render at runtime. See netlify.toml and src/lib/forms/.
+  -->
+  <form name="contact" data-netlify="true" hidden>
+    <input type="text" name="name" />
+    <input type="email" name="email" />
+    <input type="text" name="businessName" />
+    <input type="text" name="phone" />
+    <textarea name="message"></textarea>
+  </form>
+
+  <form name="mini-audit-lead" data-netlify="true" hidden>
+    <input type="email" name="email" />
+    <input type="text" name="businessName" />
+    <input type="text" name="city" />
+    <input type="text" name="industry" />
+    <input type="text" name="overallScore" />
+    <input type="text" name="weakestLenses" />
+  </form>
+</body>
+</html>

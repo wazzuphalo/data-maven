@@ -3,6 +3,7 @@ import { Container } from "@/components/ui/Container";
 import { FaqAccordion } from "@/components/ui/FaqAccordion";
 import { PlaceholderCard } from "@/components/ui/PlaceholderCard";
 import { SixLensExplorer } from "@/components/lenses/SixLensExplorer";
+import { MiniAudit } from "@/components/mini-audit/MiniAudit";
 import { PROBLEM_EXAMPLES } from "../../content/problem-examples";
 import { ENGAGEMENT_STEPS } from "../../content/engagement-steps";
 import { FAQ_ITEMS } from "../../content/faq";
@@ -134,22 +135,22 @@ export default function Home() {
         </Container>
       </section>
 
-      {/* 5. Self-serve audit tool teaser */}
-      <section className="border-t border-surface-border bg-surface-alt py-20">
-        <Container className="flex flex-col items-start gap-6">
-          <h2 className="text-h1 font-heading font-semibold max-w-(--container-content)">
-            Not ready to book a call? Run a quick self-check first.
-          </h2>
-          <p className="max-w-(--container-content) text-body-lg text-text-muted">
-            A shortened, self-reported version of the same six-lens framework
-            — 8 to 10 yes/no questions, scored instantly, no call required.
-          </p>
-          <Link
-            href="#self-serve-audit"
-            className="rounded-md bg-accent px-6 py-3 text-body-lg font-medium text-accent-foreground hover:bg-[var(--color-accent-strong)] transition-colors"
-          >
-            Run the 2-minute self-check
-          </Link>
+      {/* 5. Self-serve audit tool — primary lead capture */}
+      <section id="self-serve-audit" className="border-t border-surface-border bg-surface-alt py-20 scroll-mt-20">
+        <Container className="flex flex-col gap-8">
+          <div>
+            <h2 className="text-h1 font-heading font-semibold max-w-(--container-content)">
+              Not ready to book a call? Run a quick self-check first.
+            </h2>
+            <p className="mt-4 max-w-(--container-content) text-body-lg text-text-muted">
+              A shortened, self-reported version of the same six-lens
+              framework — 9 yes/no questions, scored instantly, no call
+              required.
+            </p>
+          </div>
+          <div className="max-w-2xl">
+            <MiniAudit />
+          </div>
         </Container>
       </section>
 
