@@ -1,26 +1,174 @@
 @import "tailwindcss";
 
+/*
+  Design tokens.
+  Spacing follows Tailwind's default 4px scale, used in 8px+ increments
+  everywhere except hairline borders/icons. Type scale below is fluid
+  (clamp) for hero/h1/h2 so it holds proportion from mobile to desktop.
+*/
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Neutral base (light mode) */
+  --color-ink-950: #12141a;
+  --color-ink-800: #2b2f3a;
+  --color-ink-600: #565c6b;
+  --color-ink-400: #8a8f9c;
+  --color-ink-200: #e2e4ea;
+  --color-ink-100: #eef0f4;
+
+  --color-surface: #fffefb;
+  --color-surface-alt: #f5f4ef;
+  --color-surface-border: var(--color-ink-200);
+
+  /* Accent — used sparingly: CTAs, active states, links */
+  --color-accent: #0b6e5f;
+  --color-accent-strong: #095c50;
+  --color-accent-foreground: #fffefb;
+
+  --color-text: var(--color-ink-950);
+  --color-text-muted: var(--color-ink-600);
+
+  --color-focus-ring: #0b6e5f;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+:root[data-theme="dark"] {
+  --color-ink-950: #f5f6f8;
+  --color-ink-800: #d6d9e0;
+  --color-ink-600: #a7acb9;
+  --color-ink-400: #7b8190;
+  --color-ink-200: #2c3038;
+  --color-ink-100: #1b1e24;
+
+  --color-surface: #100f0c;
+  --color-surface-alt: #17191f;
+  --color-surface-border: var(--color-ink-200);
+
+  --color-accent: #3fd9bf;
+  --color-accent-strong: #6ee6d1;
+  --color-accent-foreground: #0a1512;
+
+  --color-text: var(--color-ink-950);
+  --color-text-muted: var(--color-ink-600);
+
+  --color-focus-ring: #3fd9bf;
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  :root:not([data-theme="light"]) {
+    --color-ink-950: #f5f6f8;
+    --color-ink-800: #d6d9e0;
+    --color-ink-600: #a7acb9;
+    --color-ink-400: #7b8190;
+    --color-ink-200: #2c3038;
+    --color-ink-100: #1b1e24;
+
+    --color-surface: #100f0c;
+    --color-surface-alt: #17191f;
+    --color-surface-border: var(--color-ink-200);
+
+    --color-accent: #3fd9bf;
+    --color-accent-strong: #6ee6d1;
+    --color-accent-foreground: #0a1512;
+
+    --color-text: var(--color-ink-950);
+    --color-text-muted: var(--color-ink-600);
+
+    --color-focus-ring: #3fd9bf;
+  }
+}
+
+@theme inline {
+  --color-ink-950: var(--color-ink-950);
+  --color-ink-800: var(--color-ink-800);
+  --color-ink-600: var(--color-ink-600);
+  --color-ink-400: var(--color-ink-400);
+  --color-ink-200: var(--color-ink-200);
+  --color-ink-100: var(--color-ink-100);
+
+  --color-surface: var(--color-surface);
+  --color-surface-alt: var(--color-surface-alt);
+  --color-surface-border: var(--color-surface-border);
+
+  --color-accent: var(--color-accent);
+  --color-accent-strong: var(--color-accent-strong);
+  --color-accent-foreground: var(--color-accent-foreground);
+
+  --color-text: var(--color-text);
+  --color-text-muted: var(--color-text-muted);
+
+  --font-heading: var(--font-space-grotesk);
+  --font-body: var(--font-inter);
+
+  --text-hero: clamp(2.25rem, 1.7rem + 2.5vw, 3.5rem);
+  --text-h1: clamp(1.875rem, 1.5rem + 1.6vw, 2.5rem);
+  --text-h2: clamp(1.5rem, 1.3rem + 0.9vw, 1.875rem);
+  --text-h3: 1.375rem;
+  --text-body-lg: 1.125rem;
+  --text-body: 1rem;
+  --text-small: 0.875rem;
+
+  --container-content: 75ch;
+  --container-page: 1200px;
+}
+
+* {
+  border-color: var(--color-surface-border);
+}
+
+html {
+  color-scheme: light;
+}
+
+html[data-theme="dark"] {
+  color-scheme: dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  html:not([data-theme="light"]) {
+    color-scheme: dark;
   }
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-surface);
+  color: var(--color-text);
+  font-family: var(--font-body), system-ui, sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-heading), system-ui, sans-serif;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -3rem;
+  transition: top 150ms ease;
+  z-index: 100;
+}
+
+.skip-link:focus {
+  top: 1rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

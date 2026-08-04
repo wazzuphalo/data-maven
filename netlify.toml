@@ -1,0 +1,14 @@
+[build]
+  command = "npm run build"
+  publish = ".next"
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+# Netlify Forms needs a static HTML form present at build time so it can
+# detect the form and its fields. See src/app/contact/page.tsx and
+# public/__forms.html for the detection copy — do not remove either without
+# updating the other.
