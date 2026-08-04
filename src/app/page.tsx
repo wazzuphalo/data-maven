@@ -145,7 +145,7 @@ export default function Home() {
             — 8 to 10 yes/no questions, scored instantly, no call required.
           </p>
           <Link
-            href="/audit#self-serve"
+            href="#self-serve-audit"
             className="rounded-md bg-accent px-6 py-3 text-body-lg font-medium text-accent-foreground hover:bg-[var(--color-accent-strong)] transition-colors"
           >
             Run the 2-minute self-check
