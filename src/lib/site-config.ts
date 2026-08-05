@@ -2,13 +2,25 @@
 // Update these values as real business details are finalized — every page,
 // the footer, and the JSON-LD structured data all read from here.
 
+// TODO: real domain — see ASSETS-NEEDED.md. Until one is set, canonical
+// URLs/sitemap/JSON-LD fall back to Netlify's own deploy URL (set
+// automatically at build time) so nothing ships broken in the meantime —
+// this also means they'll pick up a custom domain automatically the moment
+// one is attached in Netlify, with no code change needed.
+const CONFIGURED_DOMAIN = "{{DOMAIN}}";
+const hasRealDomain = !CONFIGURED_DOMAIN.startsWith("{{");
+const fallbackUrl = process.env.URL || process.env.DEPLOY_PRIME_URL || "http://localhost:3000";
+const resolvedUrl = hasRealDomain ? `https://${CONFIGURED_DOMAIN}` : fallbackUrl;
+const resolvedDomain = hasRealDomain
+  ? CONFIGURED_DOMAIN
+  : resolvedUrl.replace(/^https?:\/\//, "");
+
 export const siteConfig = {
   studioName: "Data Maven",
   tagline: "A six-lens digital presence audit for Los Angeles County businesses",
 
-  // TODO: real domain — see ASSETS-NEEDED.md
-  domain: "{{DOMAIN}}",
-  url: "https://{{DOMAIN}}",
+  domain: resolvedDomain,
+  url: resolvedUrl,
 
   operator: {
     name: "Angel Muro",

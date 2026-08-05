@@ -20,7 +20,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(siteConfig.url.replace("{{DOMAIN}}", "example.com")),
+  metadataBase: new URL(siteConfig.url),
   title: {
     default: `${siteConfig.studioName} | Local Business Digital Presence Audits`,
     template: `%s | ${siteConfig.studioName}`,
