@@ -95,19 +95,23 @@ Each city page needs, from real research:
 - A market-specific competitive observation
 - 400+ words that would not make sense for any other city
 
-**Published:** _(none yet)_
-**Drafted, needs research:** Montebello, Pasadena, Glendale
+**Published:** Montebello, Pasadena, Glendale
+**Drafted, needs research:** Burbank, Whittier, Alhambra, Long Beach, Santa Monica
 
-Tier 2 target list beyond the first three: Burbank, Whittier, Alhambra,
-Long Beach, Santa Monica. Do not publish thin versions to hit the count —
-three real pages beat eight generic ones.
+Do not publish the drafted five just to hit a page count — each one needs
+the same real research pass the first three got (named corridors, actual
+business mix, a genuine competitive observation) before `draft: false`.
+Three real pages beat eight generic ones.
 
 ---
 
 ## 5. Analytics & forms
 
-- [ ] **Plausible or Umami account** — script is stubbed behind
-      `NEXT_PUBLIC_ANALYTICS_DOMAIN` and disabled by default
+- [ ] **Plausible or Umami account** — script is stubbed in
+      `src/components/seo/Analytics.tsx`, disabled by default. Set
+      `NEXT_PUBLIC_ANALYTICS_DOMAIN` to enable Plausible, or set it plus
+      `NEXT_PUBLIC_ANALYTICS_PROVIDER=umami` and
+      `NEXT_PUBLIC_UMAMI_WEBSITE_ID` to use Umami instead
 - [ ] **Netlify site** — form submissions land in the Netlify dashboard on the
       free tier (100/month). Needs the site connected before forms work in prod.
 - [ ] **Resend API key** (optional upgrade path) — `RESEND_API_KEY` env var
