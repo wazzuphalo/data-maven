@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
+import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
+import { JsonLd } from "@/components/seo/JsonLd";
 import { SixLensExplorer } from "@/components/lenses/SixLensExplorer";
+import { breadcrumbSchema } from "@/lib/schema";
 import { siteConfig } from "@/lib/site-config";
 
 export const metadata: Metadata = {
@@ -10,6 +13,11 @@ export const metadata: Metadata = {
     "How Data Maven diagnoses a local business's digital presence across six lenses before recommending a single service — for Los Angeles County businesses.",
   alternates: { canonical: "/audit" },
 };
+
+const CRUMBS = [
+  { href: "/", label: "Home" },
+  { href: "/audit", label: "The Audit" },
+];
 
 const PRINCIPLES = [
   {
@@ -32,8 +40,10 @@ const PRINCIPLES = [
 export default function AuditPage() {
   return (
     <>
+      <JsonLd data={breadcrumbSchema(CRUMBS)} />
       <section className="border-b border-surface-border bg-surface-alt">
-        <Container className="flex flex-col gap-6 py-20">
+        <Container className="flex flex-col gap-4 py-20">
+          <Breadcrumbs items={CRUMBS} />
           <h1 className="max-w-(--container-content) text-hero font-heading font-semibold">
             The six-lens digital presence audit
           </h1>

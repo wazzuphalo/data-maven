@@ -1,21 +1,32 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
+import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
+import { JsonLd } from "@/components/seo/JsonLd";
 import { CommissionCalculator } from "@/components/tools/CommissionCalculator";
+import { breadcrumbSchema, serviceListSchema } from "@/lib/schema";
 import { SERVICES } from "../../../content/services";
 
 export const metadata: Metadata = {
-  title: "Services — What the Audit Findings Turn Into",
+  title: "Services — Built From Audit Findings",
   description:
     "Data Maven doesn't sell a fixed service menu. Each service exists because a specific audit finding calls for it — see what that looks like lens by lens.",
   alternates: { canonical: "/services" },
 };
 
+const CRUMBS = [
+  { href: "/", label: "Home" },
+  { href: "/services", label: "Services" },
+];
+
 export default function ServicesPage() {
   return (
     <>
+      <JsonLd data={breadcrumbSchema(CRUMBS)} />
+      <JsonLd data={serviceListSchema(SERVICES)} />
       <section className="border-b border-surface-border bg-surface-alt">
-        <Container className="flex flex-col gap-6 py-20">
+        <Container className="flex flex-col gap-4 py-20">
+          <Breadcrumbs items={CRUMBS} />
           <h1 className="max-w-(--container-content) text-hero font-heading font-semibold">
             Services follow the findings — not the other way around
           </h1>

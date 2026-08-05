@@ -4,7 +4,9 @@ import Link from "next/link";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { Container } from "@/components/ui/Container";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
+import { JsonLd } from "@/components/seo/JsonLd";
 import { getArea, getPublishedAreaSlugs } from "@/lib/areas";
+import { breadcrumbSchema, localBusinessAreaSchema } from "@/lib/schema";
 import { siteConfig } from "@/lib/site-config";
 
 export function generateStaticParams() {
@@ -41,18 +43,26 @@ export default async function AreaCityPage({
   }
 
   const { frontmatter, content } = area;
+  const crumbs = [
+    { href: "/", label: "Home" },
+    { href: "/areas", label: "Service Area" },
+    { href: `/areas/${frontmatter.slug}`, label: frontmatter.city },
+  ];
 
   return (
     <>
+      <JsonLd data={breadcrumbSchema(crumbs)} />
+      <JsonLd
+        data={localBusinessAreaSchema({
+          name: frontmatter.city,
+          path: `/areas/${frontmatter.slug}`,
+          latitude: frontmatter.latitude,
+          longitude: frontmatter.longitude,
+        })}
+      />
       <section className="border-b border-surface-border bg-surface-alt">
         <Container className="flex flex-col gap-4 py-16">
-          <Breadcrumbs
-            items={[
-              { href: "/", label: "Home" },
-              { href: "/areas", label: "Service Area" },
-              { href: `/areas/${frontmatter.slug}`, label: frontmatter.city },
-            ]}
-          />
+          <Breadcrumbs items={crumbs} />
           <h1 className="max-w-(--container-content) text-hero font-heading font-semibold">
             {frontmatter.city} digital presence audit
           </h1>

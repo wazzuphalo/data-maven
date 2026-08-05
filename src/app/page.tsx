@@ -1,18 +1,27 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { FaqAccordion } from "@/components/ui/FaqAccordion";
 import { PlaceholderCard } from "@/components/ui/PlaceholderCard";
 import { SixLensExplorer } from "@/components/lenses/SixLensExplorer";
 import { MiniAudit } from "@/components/mini-audit/MiniAudit";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { professionalServiceSchema, faqPageSchema } from "@/lib/schema";
 import { PROBLEM_EXAMPLES } from "../../content/problem-examples";
 import { ENGAGEMENT_STEPS } from "../../content/engagement-steps";
 import { FAQ_ITEMS } from "../../content/faq";
 import { GOOD_FIT, NOT_A_FIT } from "../../content/audience-fit";
 import { siteConfig } from "@/lib/site-config";
 
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
+};
+
 export default function Home() {
   return (
     <>
+      <JsonLd data={professionalServiceSchema()} />
+      <JsonLd data={faqPageSchema(FAQ_ITEMS)} />
       {/* 1. Hero */}
       <section className="border-b border-surface-border bg-surface-alt">
         <Container className="flex flex-col gap-6 py-20 md:py-28">

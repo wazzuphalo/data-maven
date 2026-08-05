@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
+import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
+import { JsonLd } from "@/components/seo/JsonLd";
 import { getAllAreasSummary } from "@/lib/areas";
+import { breadcrumbSchema, professionalServiceSchema } from "@/lib/schema";
 import { siteConfig } from "@/lib/site-config";
 
 export const metadata: Metadata = {
@@ -11,13 +14,21 @@ export const metadata: Metadata = {
   alternates: { canonical: "/areas" },
 };
 
+const CRUMBS = [
+  { href: "/", label: "Home" },
+  { href: "/areas", label: "Service Area" },
+];
+
 export default function AreasPage() {
   const published = getAllAreasSummary().filter((a) => a.draft !== true);
 
   return (
     <>
+      <JsonLd data={breadcrumbSchema(CRUMBS)} />
+      <JsonLd data={professionalServiceSchema()} />
       <section className="border-b border-surface-border bg-surface-alt">
-        <Container className="flex flex-col gap-6 py-20">
+        <Container className="flex flex-col gap-4 py-20">
+          <Breadcrumbs items={CRUMBS} />
           <h1 className="max-w-(--container-content) text-hero font-heading font-semibold">
             Serving businesses across {siteConfig.serviceArea.name}
           </h1>

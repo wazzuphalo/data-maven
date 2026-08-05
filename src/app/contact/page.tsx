@@ -1,21 +1,31 @@
 import type { Metadata } from "next";
 import { Container } from "@/components/ui/Container";
+import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
+import { JsonLd } from "@/components/seo/JsonLd";
 import { ContactForm } from "@/components/contact/ContactForm";
+import { breadcrumbSchema } from "@/lib/schema";
 import { siteConfig } from "@/lib/site-config";
 
 export const metadata: Metadata = {
-  title: "Contact — Book Your Free Digital Presence Audit",
+  title: "Contact — Book a Free Audit",
   description: `Book a free six-lens digital presence audit for your ${siteConfig.serviceArea.short} business, or send a message directly.`,
   alternates: { canonical: "/contact" },
 };
 
 const bookingUrlIsReal = siteConfig.bookingUrl.startsWith("http");
 
+const CRUMBS = [
+  { href: "/", label: "Home" },
+  { href: "/contact", label: "Contact" },
+];
+
 export default function ContactPage() {
   return (
     <>
+      <JsonLd data={breadcrumbSchema(CRUMBS)} />
       <section className="border-b border-surface-border bg-surface-alt">
         <Container className="flex flex-col gap-4 py-16">
+          <Breadcrumbs items={CRUMBS} />
           <h1 className="max-w-(--container-content) text-hero font-heading font-semibold">
             Get your free audit
           </h1>

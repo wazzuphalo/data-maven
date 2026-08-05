@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
+import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { breadcrumbSchema, personSchema } from "@/lib/schema";
 import { siteConfig } from "@/lib/site-config";
 
 export const metadata: Metadata = {
@@ -10,11 +13,19 @@ export const metadata: Metadata = {
   alternates: { canonical: "/about" },
 };
 
+const CRUMBS = [
+  { href: "/", label: "Home" },
+  { href: "/about", label: "About" },
+];
+
 export default function AboutPage() {
   return (
     <>
+      <JsonLd data={breadcrumbSchema(CRUMBS)} />
+      <JsonLd data={personSchema()} />
       <section className="border-b border-surface-border bg-surface-alt">
-        <Container className="flex flex-col gap-6 py-20">
+        <Container className="flex flex-col gap-4 py-20">
+          <Breadcrumbs items={CRUMBS} />
           <h1 className="max-w-(--container-content) text-hero font-heading font-semibold">
             {siteConfig.operator.name}
           </h1>
