@@ -12,21 +12,23 @@
     every field either form can submit, so both are registered regardless
     of how they render at runtime. See netlify.toml and src/lib/forms/.
   -->
-  <form name="contact" data-netlify="true" hidden>
+  <form name="contact" data-netlify="true" data-netlify-honeypot="company" hidden>
     <input type="text" name="name" />
     <input type="email" name="email" />
     <input type="text" name="businessName" />
     <input type="text" name="phone" />
     <textarea name="message"></textarea>
+    <input type="text" name="company" />
   </form>
 
-  <form name="mini-audit-lead" data-netlify="true" hidden>
+  <form name="mini-audit-lead" data-netlify="true" data-netlify-honeypot="company" hidden>
     <input type="email" name="email" />
     <input type="text" name="businessName" />
     <input type="text" name="city" />
     <input type="text" name="industry" />
     <input type="text" name="overallScore" />
     <input type="text" name="weakestLenses" />
+    <input type="text" name="company" />
   </form>
 </body>
 </html>

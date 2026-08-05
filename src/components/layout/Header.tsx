@@ -7,7 +7,10 @@ export function Header() {
   return (
     <header className="relative border-b border-surface-border bg-surface">
       <div className="mx-auto flex max-w-(--container-page) items-center justify-between gap-4 px-6 py-4">
-        <Link href="/" className="text-h3 font-heading font-semibold tracking-tight">
+        <Link
+          href="/"
+          className="inline-flex min-h-11 items-center text-h3 font-heading font-semibold tracking-tight"
+        >
           {siteConfig.studioName}
         </Link>
 

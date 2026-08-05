@@ -65,10 +65,16 @@ export function ContactForm() {
   return (
     <form
       name="contact"
+      method="POST"
+      action="/?submitted=contact"
       data-netlify="true"
+      data-netlify-honeypot="company"
       onSubmit={handleSubmit}
       className="flex flex-col gap-5"
     >
+      {/* With JS disabled, onSubmit never fires — this becomes a plain
+          native POST that Netlify's edge intercepts directly, no fetch
+          required. That's the no-JS fallback for this form. */}
       <input type="hidden" name="form-name" value="contact" />
 
       <div className="flex flex-col gap-2">

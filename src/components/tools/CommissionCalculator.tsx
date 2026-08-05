@@ -23,6 +23,13 @@ export function CommissionCalculator() {
 
   return (
     <div className="rounded-lg border border-surface-border bg-surface p-6 md:p-8">
+      <noscript>
+        <p className="mb-4 text-small text-text-muted">
+          The numbers below update live with JavaScript enabled. Without it,
+          you&apos;re seeing the result for the example figures shown in the
+          fields.
+        </p>
+      </noscript>
       <div className="grid gap-6 md:grid-cols-3">
         <div className="flex flex-col gap-2">
           <label htmlFor="cc-orders" className="text-body font-medium">
