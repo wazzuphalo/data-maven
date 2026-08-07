@@ -5,6 +5,7 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { SkipLink } from "@/components/layout/SkipLink";
 import { Analytics } from "@/components/seo/Analytics";
+import { FloatingAssistant } from "@/components/assistant/FloatingAssistant";
 import { siteConfig } from "@/lib/site-config";
 
 const spaceGrotesk = Space_Grotesk({
@@ -64,6 +65,7 @@ export default function RootLayout({
           {children}
         </main>
         <Footer />
+        <FloatingAssistant />
       </body>
     </html>
   );

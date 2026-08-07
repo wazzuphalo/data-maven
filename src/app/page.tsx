@@ -5,6 +5,7 @@ import { FaqAccordion } from "@/components/ui/FaqAccordion";
 import { PlaceholderCard } from "@/components/ui/PlaceholderCard";
 import { SixLensExplorer } from "@/components/lenses/SixLensExplorer";
 import { MiniAudit } from "@/components/mini-audit/MiniAudit";
+import { SixLensScanner } from "@/components/hero/SixLensScanner";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { professionalServiceSchema, faqPageSchema } from "@/lib/schema";
 import { PROBLEM_EXAMPLES } from "../../content/problem-examples";
@@ -24,32 +25,35 @@ export default function Home() {
       <JsonLd data={faqPageSchema(FAQ_ITEMS)} />
       {/* 1. Hero */}
       <section className="border-b border-surface-border bg-surface-alt">
-        <Container className="flex flex-col gap-6 py-20 md:py-28">
-          <h1 className="max-w-(--container-content) text-hero font-heading font-semibold text-balance">
-            We find the specific, fixable gaps costing your business
-            customers — then fix them in order of impact.
-          </h1>
-          <p className="max-w-(--container-content) text-body-lg text-text-muted">
-            A six-lens digital presence audit for {siteConfig.serviceArea.name}{" "}
-            businesses: Google Business Profile, reviews, website, business
-            health, marketing operations, and competitive context. Every
-            finding is dated and checked against observable criteria — not
-            opinion.
-          </p>
-          <div className="flex flex-col gap-3 sm:flex-row">
-            <Link
-              href="/contact"
-              className="rounded-md bg-accent px-6 py-3 text-center text-body-lg font-medium text-accent-foreground hover:bg-[var(--color-accent-strong)] transition-colors"
-            >
-              Get your free audit
-            </Link>
-            <Link
-              href="/audit"
-              className="rounded-md border border-surface-border px-6 py-3 text-center text-body-lg font-medium hover:border-accent hover:text-accent transition-colors"
-            >
-              See how the audit works
-            </Link>
+        <Container className="grid items-center gap-12 py-20 md:py-28 lg:grid-cols-[1.1fr_0.9fr]">
+          <div className="flex flex-col gap-6">
+            <h1 className="text-hero font-heading font-semibold text-balance">
+              We find the specific, fixable gaps costing your business
+              customers — then fix them in order of impact.
+            </h1>
+            <p className="max-w-[60ch] text-body-lg text-text-muted">
+              A six-lens digital presence audit for{" "}
+              {siteConfig.serviceArea.name} businesses: Google Business
+              Profile, reviews, website, business health, marketing
+              operations, and competitive context. Every finding is dated and
+              checked against observable criteria — not opinion.
+            </p>
+            <div className="flex flex-col gap-3 sm:flex-row">
+              <Link
+                href="/contact"
+                className="rounded-md bg-accent px-6 py-3 text-center text-body-lg font-medium text-accent-foreground hover:bg-[var(--color-accent-strong)] transition-colors"
+              >
+                Get your free audit
+              </Link>
+              <Link
+                href="/audit"
+                className="rounded-md border border-surface-border px-6 py-3 text-center text-body-lg font-medium hover:border-accent hover:text-accent transition-colors"
+              >
+                See how the audit works
+              </Link>
+            </div>
           </div>
+          <SixLensScanner />
         </Container>
       </section>
 

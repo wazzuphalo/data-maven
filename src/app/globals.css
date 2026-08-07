@@ -169,6 +169,130 @@ h4 {
   top: 1rem;
 }
 
+/* --- Six-lens hero scanner --- */
+.scanner-tilt {
+  transform: rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+  transform-style: preserve-3d;
+  transition: transform 200ms ease-out;
+  will-change: transform;
+}
+
+.scanner-seg {
+  animation: scanner-draw 0.9s ease-out forwards;
+  transition: opacity 200ms ease;
+}
+
+@keyframes scanner-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.scanner-label {
+  opacity: 0;
+  animation: scanner-fade 0.5s ease-out forwards;
+}
+
+@keyframes scanner-fade {
+  to {
+    opacity: 1;
+  }
+}
+
+.scanner-sweep {
+  animation: scanner-spin 9s linear infinite;
+}
+
+@keyframes scanner-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.scanner-glow {
+  animation: scanner-pulse 4s ease-in-out infinite;
+  transform-origin: center;
+}
+
+@keyframes scanner-pulse {
+  0%,
+  100% {
+    opacity: 0.5;
+    transform: scale(0.94);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.04);
+  }
+}
+
+.scanner-readout {
+  transition: color 200ms ease;
+}
+
+/* --- Floating assistant --- */
+.assistant-panel {
+  animation: assistant-in 200ms ease-out;
+  transform-origin: bottom right;
+}
+
+@keyframes assistant-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* A slow, gentle idle bob — subtle enough to draw the eye without nagging. */
+.assistant-fab {
+  animation: assistant-bob 3.5s ease-in-out infinite;
+}
+
+@keyframes assistant-bob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+.assistant-fab:hover {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .assistant-panel {
+    animation: none;
+  }
+  .assistant-fab {
+    animation: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scanner-seg {
+    stroke-dashoffset: 0 !important;
+  }
+  .scanner-label {
+    opacity: 1 !important;
+  }
+  .scanner-sweep {
+    display: none;
+  }
+  .scanner-tilt {
+    transform: none !important;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
