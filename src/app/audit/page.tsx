@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
+import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { SixLensExplorer } from "@/components/lenses/SixLensExplorer";
@@ -41,9 +42,12 @@ export default function AuditPage() {
   return (
     <>
       <JsonLd data={breadcrumbSchema(CRUMBS)} />
-      <section className="border-b border-surface-border bg-surface-alt">
-        <Container className="flex flex-col gap-4 py-20">
+      <section className="relative overflow-hidden border-b border-surface-border bg-surface-alt">
+        <div className="hero-aura" aria-hidden="true" />
+        <div className="absolute inset-0 dotted-grid opacity-70" aria-hidden="true" />
+        <Container className="relative flex flex-col gap-4 py-20">
           <Breadcrumbs items={CRUMBS} />
+          <Eyebrow>The methodology</Eyebrow>
           <h1 className="max-w-(--container-content) text-hero font-heading font-semibold">
             The six-lens digital presence audit
           </h1>
@@ -57,21 +61,25 @@ export default function AuditPage() {
           </p>
           <Link
             href="/contact"
-            className="w-fit rounded-md bg-accent px-6 py-3 text-body-lg font-medium text-accent-foreground hover:bg-[var(--color-accent-strong)] transition-colors"
+            className="btn-primary group/btn inline-flex w-fit items-center gap-2 rounded-lg bg-accent px-6 py-3 text-body-lg font-medium text-accent-foreground hover:bg-[var(--color-accent-strong)] transition-colors"
           >
             Get your free audit
+            <span className="btn-arrow" aria-hidden="true">
+              &rarr;
+            </span>
           </Link>
         </Container>
       </section>
 
-      <section className="py-20">
+      <section className="py-20 md:py-24">
         <Container>
-          <h2 className="text-h1 font-heading font-semibold max-w-(--container-content)">
+          <Eyebrow>Why it&apos;s different</Eyebrow>
+          <h2 className="mt-3 text-h1 font-heading font-semibold max-w-(--container-content)">
             How it&apos;s different from an SEO audit or a marketing checklist
           </h2>
-          <div className="mt-10 grid gap-8 md:grid-cols-3">
+          <div className="mt-10 grid gap-6 md:grid-cols-3">
             {PRINCIPLES.map((principle) => (
-              <div key={principle.title}>
+              <div key={principle.title} className="reveal card card-interactive p-6">
                 <h3 className="text-body-lg font-heading font-semibold">
                   {principle.title}
                 </h3>
@@ -84,9 +92,10 @@ export default function AuditPage() {
         </Container>
       </section>
 
-      <section className="border-t border-surface-border bg-surface-alt py-20">
+      <section className="border-y border-surface-border bg-surface-alt py-20 md:py-24">
         <Container>
-          <h2 className="text-h1 font-heading font-semibold max-w-(--container-content)">
+          <Eyebrow>The framework</Eyebrow>
+          <h2 className="mt-3 text-h1 font-heading font-semibold max-w-(--container-content)">
             The six lenses, in full
           </h2>
           <p className="mt-4 max-w-(--container-content) text-body-lg text-text-muted">
@@ -94,7 +103,7 @@ export default function AuditPage() {
             and an example of the kind of finding it surfaces. Everything is
             expanded below if you&apos;d rather just read straight through.
           </p>
-          <div className="mt-10">
+          <div className="reveal mt-10 card p-2 sm:p-6">
             <SixLensExplorer />
           </div>
         </Container>
@@ -119,8 +128,10 @@ export default function AuditPage() {
         </Container>
       </section>
 
-      <section className="border-t border-surface-border bg-surface-alt py-20">
-        <Container className="flex flex-col items-start gap-6">
+      <section className="relative overflow-hidden border-t border-surface-border bg-surface-alt py-20 md:py-24">
+        <div className="hero-aura" aria-hidden="true" />
+        <Container className="relative flex flex-col items-start gap-6">
+          <Eyebrow>Get started</Eyebrow>
           <h2 className="text-h1 font-heading font-semibold max-w-(--container-content)">
             Ready for the real thing?
           </h2>
@@ -130,9 +141,12 @@ export default function AuditPage() {
           </p>
           <Link
             href="/contact"
-            className="rounded-md bg-accent px-6 py-3 text-body-lg font-medium text-accent-foreground hover:bg-[var(--color-accent-strong)] transition-colors"
+            className="btn-primary group/btn inline-flex items-center gap-2 rounded-lg bg-accent px-6 py-3 text-body-lg font-medium text-accent-foreground hover:bg-[var(--color-accent-strong)] transition-colors"
           >
             Get your free audit
+            <span className="btn-arrow" aria-hidden="true">
+              &rarr;
+            </span>
           </Link>
         </Container>
       </section>

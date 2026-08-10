@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
+import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { CommissionCalculator } from "@/components/tools/CommissionCalculator";
@@ -24,9 +25,12 @@ export default function ServicesPage() {
     <>
       <JsonLd data={breadcrumbSchema(CRUMBS)} />
       <JsonLd data={serviceListSchema(SERVICES)} />
-      <section className="border-b border-surface-border bg-surface-alt">
-        <Container className="flex flex-col gap-4 py-20">
+      <section className="relative overflow-hidden border-b border-surface-border bg-surface-alt">
+        <div className="hero-aura" aria-hidden="true" />
+        <div className="absolute inset-0 dotted-grid opacity-70" aria-hidden="true" />
+        <Container className="relative flex flex-col gap-4 py-20">
           <Breadcrumbs items={CRUMBS} />
+          <Eyebrow>Services</Eyebrow>
           <h1 className="max-w-(--container-content) text-hero font-heading font-semibold">
             Services follow the findings — not the other way around
           </h1>
@@ -39,23 +43,27 @@ export default function ServicesPage() {
           </p>
           <Link
             href="/contact"
-            className="w-fit rounded-md bg-accent px-6 py-3 text-body-lg font-medium text-accent-foreground hover:bg-[var(--color-accent-strong)] transition-colors"
+            className="btn-primary group/btn inline-flex w-fit items-center gap-2 rounded-lg bg-accent px-6 py-3 text-body-lg font-medium text-accent-foreground hover:bg-[var(--color-accent-strong)] transition-colors"
           >
             Get your free audit
+            <span className="btn-arrow" aria-hidden="true">
+              &rarr;
+            </span>
           </Link>
         </Container>
       </section>
 
-      <section className="py-20">
+      <section className="py-20 md:py-24">
         <Container>
-          <h2 className="text-h1 font-heading font-semibold max-w-(--container-content)">
+          <Eyebrow>Audit outputs</Eyebrow>
+          <h2 className="mt-3 text-h1 font-heading font-semibold max-w-(--container-content)">
             What each finding turns into
           </h2>
-          <div className="mt-10 flex flex-col gap-8">
+          <div className="mt-10 flex flex-col gap-6">
             {SERVICES.map((service) => (
               <div
                 key={service.lensId}
-                className="rounded-lg border border-surface-border p-6 md:p-8"
+                className="reveal card card-interactive p-6 md:p-8"
               >
                 <p className="text-small font-medium uppercase tracking-wide text-accent">
                   {service.triggeredWhen}
@@ -82,9 +90,10 @@ export default function ServicesPage() {
         </Container>
       </section>
 
-      <section className="border-t border-surface-border bg-surface-alt py-20">
+      <section className="border-y border-surface-border bg-surface-alt py-20 md:py-24">
         <Container>
-          <h2 className="text-h1 font-heading font-semibold max-w-(--container-content)">
+          <Eyebrow>Example finding</Eyebrow>
+          <h2 className="mt-3 text-h1 font-heading font-semibold max-w-(--container-content)">
             Take delivery orders? See what commission is actually costing you
           </h2>
           <p className="mt-4 max-w-(--container-content) text-body-lg text-text-muted">
@@ -94,14 +103,16 @@ export default function ServicesPage() {
             number on. This applies specifically to businesses taking
             delivery-app orders — not every business.
           </p>
-          <div className="mt-10 max-w-2xl">
+          <div className="reveal mt-10 max-w-2xl">
             <CommissionCalculator />
           </div>
         </Container>
       </section>
 
-      <section className="py-20">
-        <Container className="flex flex-col items-start gap-6">
+      <section className="relative overflow-hidden py-20 md:py-24">
+        <div className="hero-aura" aria-hidden="true" />
+        <Container className="relative flex flex-col items-start gap-6">
+          <Eyebrow>Get started</Eyebrow>
           <h2 className="text-h1 font-heading font-semibold max-w-(--container-content)">
             Not sure which of these applies to you?
           </h2>
@@ -110,9 +121,12 @@ export default function ServicesPage() {
           </p>
           <Link
             href="/contact"
-            className="rounded-md bg-accent px-6 py-3 text-body-lg font-medium text-accent-foreground hover:bg-[var(--color-accent-strong)] transition-colors"
+            className="btn-primary group/btn inline-flex items-center gap-2 rounded-lg bg-accent px-6 py-3 text-body-lg font-medium text-accent-foreground hover:bg-[var(--color-accent-strong)] transition-colors"
           >
             Get your free audit
+            <span className="btn-arrow" aria-hidden="true">
+              &rarr;
+            </span>
           </Link>
         </Container>
       </section>

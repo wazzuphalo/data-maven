@@ -33,6 +33,7 @@ export const metadata: Metadata = {
 // the wrong theme. Runs synchronously, before hydration.
 const themeInitScript = `
 (function () {
+  document.documentElement.classList.add('js');
   try {
     var stored = window.localStorage.getItem('theme');
     var theme = stored === 'light' || stored === 'dark'
