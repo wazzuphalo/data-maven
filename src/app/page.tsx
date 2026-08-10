@@ -75,12 +75,11 @@ export default function Home() {
         <Container className="relative border-t border-surface-border">
           <dl className="grid grid-cols-2 gap-px md:grid-cols-4">
             {HERO_FACTS.map((fact) => (
-              <div key={fact.label} className="flex flex-col gap-1 py-6 pr-6">
-                <dt className="sr-only">{fact.label}</dt>
+              <div key={fact.label} className="flex flex-col-reverse gap-1 py-6 pr-6">
+                <dt className="text-small text-text-muted">{fact.label}</dt>
                 <dd className="text-h2 font-heading font-semibold text-accent">
                   {fact.value}
                 </dd>
-                <p className="text-small text-text-muted">{fact.label}</p>
               </div>
             ))}
           </dl>
