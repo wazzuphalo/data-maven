@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Container } from "@/components/ui/Container";
+import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { breadcrumbSchema } from "@/lib/schema";
@@ -22,9 +23,11 @@ export default function TermsPage() {
   return (
     <>
       <JsonLd data={breadcrumbSchema(CRUMBS)} />
-      <section className="border-b border-surface-border bg-surface-alt">
-        <Container className="flex flex-col gap-4 py-16">
+      <section className="relative overflow-hidden border-b border-surface-border bg-surface-alt">
+        <div className="hero-aura" aria-hidden="true" />
+        <Container className="relative flex flex-col gap-4 py-16">
           <Breadcrumbs items={CRUMBS} />
+          <Eyebrow>Legal</Eyebrow>
           <h1 className="max-w-(--container-content) text-hero font-heading font-semibold">
             Terms of Service
           </h1>

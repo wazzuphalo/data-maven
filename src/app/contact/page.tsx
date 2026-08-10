@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Container } from "@/components/ui/Container";
+import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { ContactForm } from "@/components/contact/ContactForm";
@@ -23,9 +24,12 @@ export default function ContactPage() {
   return (
     <>
       <JsonLd data={breadcrumbSchema(CRUMBS)} />
-      <section className="border-b border-surface-border bg-surface-alt">
-        <Container className="flex flex-col gap-4 py-16">
+      <section className="relative overflow-hidden border-b border-surface-border bg-surface-alt">
+        <div className="hero-aura" aria-hidden="true" />
+        <div className="absolute inset-0 dotted-grid opacity-70" aria-hidden="true" />
+        <Container className="relative flex flex-col gap-4 py-16">
           <Breadcrumbs items={CRUMBS} />
+          <Eyebrow>Contact</Eyebrow>
           <h1 className="max-w-(--container-content) text-hero font-heading font-semibold">
             Get your free audit
           </h1>
@@ -36,9 +40,9 @@ export default function ContactPage() {
         </Container>
       </section>
 
-      <section className="py-16">
-        <Container className="grid gap-12 lg:grid-cols-2">
-          <div>
+      <section className="py-16 md:py-20">
+        <Container className="grid gap-8 lg:grid-cols-2">
+          <div className="card p-6 md:p-8">
             <h2 className="text-h2 font-heading font-semibold">
               Book a time
             </h2>
@@ -93,7 +97,7 @@ export default function ContactPage() {
             </p>
           </div>
 
-          <div>
+          <div className="card p-6 md:p-8">
             <h2 className="text-h2 font-heading font-semibold">
               Send a message
             </h2>

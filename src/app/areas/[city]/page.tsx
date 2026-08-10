@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { Container } from "@/components/ui/Container";
+import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { getArea, getPublishedAreaSlugs } from "@/lib/areas";
@@ -60,9 +61,12 @@ export default async function AreaCityPage({
           longitude: frontmatter.longitude,
         })}
       />
-      <section className="border-b border-surface-border bg-surface-alt">
-        <Container className="flex flex-col gap-4 py-16">
+      <section className="relative overflow-hidden border-b border-surface-border bg-surface-alt">
+        <div className="hero-aura" aria-hidden="true" />
+        <div className="absolute inset-0 dotted-grid opacity-70" aria-hidden="true" />
+        <Container className="relative flex flex-col gap-4 py-16">
           <Breadcrumbs items={crumbs} />
+          <Eyebrow>{siteConfig.serviceArea.short} · {frontmatter.city}</Eyebrow>
           <h1 className="max-w-(--container-content) text-hero font-heading font-semibold">
             {frontmatter.city} digital presence audit
           </h1>
@@ -85,9 +89,12 @@ export default async function AreaCityPage({
           <div className="mt-12 border-t border-surface-border pt-8">
             <Link
               href="/contact"
-              className="inline-block rounded-md bg-accent px-6 py-3 text-body-lg font-medium text-accent-foreground hover:bg-[var(--color-accent-strong)] transition-colors"
+              className="btn-primary group/btn inline-flex items-center gap-2 rounded-lg bg-accent px-6 py-3 text-body-lg font-medium text-accent-foreground hover:bg-[var(--color-accent-strong)] transition-colors"
             >
               Get your free audit
+              <span className="btn-arrow" aria-hidden="true">
+                &rarr;
+              </span>
             </Link>
           </div>
         </Container>

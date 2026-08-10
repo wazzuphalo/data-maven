@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
+import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { BeforeAfterSlider } from "@/components/results/BeforeAfterSlider";
@@ -22,9 +23,12 @@ export default function ResultsPage() {
   return (
     <>
       <JsonLd data={breadcrumbSchema(CRUMBS)} />
-      <section className="border-b border-surface-border bg-surface-alt">
-        <Container className="flex flex-col gap-4 py-20">
+      <section className="relative overflow-hidden border-b border-surface-border bg-surface-alt">
+        <div className="hero-aura" aria-hidden="true" />
+        <div className="absolute inset-0 dotted-grid opacity-70" aria-hidden="true" />
+        <Container className="relative flex flex-col gap-4 py-20">
           <Breadcrumbs items={CRUMBS} />
+          <Eyebrow>Results</Eyebrow>
           <h1 className="max-w-(--container-content) text-hero font-heading font-semibold">
             Results
           </h1>
@@ -37,9 +41,10 @@ export default function ResultsPage() {
         </Container>
       </section>
 
-      <section className="py-20">
+      <section className="py-20 md:py-24">
         <Container>
-          <h2 className="text-h1 font-heading font-semibold max-w-(--container-content)">
+          <Eyebrow>What&apos;s coming</Eyebrow>
+          <h2 className="mt-3 text-h1 font-heading font-semibold max-w-(--container-content)">
             What&apos;s coming
           </h2>
           <p className="mt-4 max-w-(--container-content) text-body-lg text-text-muted">
@@ -48,15 +53,21 @@ export default function ResultsPage() {
             where the number came from.
           </p>
 
-          <div className="mt-10 grid gap-8 md:grid-cols-2">
-            <BeforeAfterSlider label="Restaurant — Google Business Profile & ordering fix" />
-            <BeforeAfterSlider label="Dental practice — reputation cadence" />
+          <div className="mt-10 grid gap-6 md:grid-cols-2">
+            <div className="reveal">
+              <BeforeAfterSlider label="Restaurant — Google Business Profile & ordering fix" />
+            </div>
+            <div className="reveal">
+              <BeforeAfterSlider label="Dental practice — reputation cadence" />
+            </div>
           </div>
         </Container>
       </section>
 
-      <section className="border-t border-surface-border bg-surface-alt py-20">
-        <Container className="flex flex-col items-start gap-6">
+      <section className="relative overflow-hidden border-t border-surface-border bg-surface-alt py-20 md:py-24">
+        <div className="hero-aura" aria-hidden="true" />
+        <Container className="relative flex flex-col items-start gap-6">
+          <Eyebrow>Get started</Eyebrow>
           <h2 className="text-h1 font-heading font-semibold max-w-(--container-content)">
             Be the first case study
           </h2>
@@ -66,9 +77,12 @@ export default function ResultsPage() {
           </p>
           <Link
             href="/contact"
-            className="rounded-md bg-accent px-6 py-3 text-body-lg font-medium text-accent-foreground hover:bg-[var(--color-accent-strong)] transition-colors"
+            className="btn-primary group/btn inline-flex items-center gap-2 rounded-lg bg-accent px-6 py-3 text-body-lg font-medium text-accent-foreground hover:bg-[var(--color-accent-strong)] transition-colors"
           >
             Get your free audit
+            <span className="btn-arrow" aria-hidden="true">
+              &rarr;
+            </span>
           </Link>
         </Container>
       </section>
