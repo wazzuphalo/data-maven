@@ -2,7 +2,6 @@ import Link from "next/link";
 import { NAV_LINKS, siteConfig } from "@/lib/site-config";
 import { ThemeToggle } from "./ThemeToggle";
 import { MobileNav } from "./MobileNav";
-import { WishlistIndicator } from "./WishlistIndicator";
 
 export function Header() {
   return (
@@ -15,8 +14,8 @@ export function Header() {
           {siteConfig.studioName}
         </Link>
 
-        <nav aria-label="Primary" className="hidden lg:block">
-          <ul className="flex items-center gap-6">
+        <nav aria-label="Primary" className="hidden md:block">
+          <ul className="flex items-center gap-8">
             {NAV_LINKS.map((link) => (
               <li key={link.href}>
                 <Link
@@ -31,11 +30,10 @@ export function Header() {
         </nav>
 
         <div className="flex items-center gap-3">
-          <WishlistIndicator />
           <ThemeToggle />
           <Link
             href="/contact"
-            className="hidden rounded-md bg-accent px-4 py-2 text-body font-medium text-accent-foreground hover:bg-[var(--color-accent-strong)] transition-colors lg:inline-block"
+            className="hidden rounded-md bg-accent px-4 py-2 text-body font-medium text-accent-foreground hover:bg-[var(--color-accent-strong)] transition-colors md:inline-block"
           >
             Get your free audit
           </Link>

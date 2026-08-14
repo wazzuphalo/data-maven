@@ -10,11 +10,7 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: "*",
       allow: "/",
-      // /restaurants, /wishlist, /signup are a prototype: placeholder listings
-      // and a demo signup, no real data or accounts yet. Indexing fake local
-      // listings would actively hurt search/GEO trust — keep these out until
-      // there's real data and a real account system behind them.
-      disallow: ["/api/", "/restaurants", "/wishlist", "/signup"],
+      disallow: ["/api/"],
     },
     sitemap: new URL("/sitemap.xml", base).toString(),
   };
