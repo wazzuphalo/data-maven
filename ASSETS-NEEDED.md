@@ -125,3 +125,34 @@ Three real pages beat eight generic ones.
 **not** been reviewed by a lawyer. Before running paid ads (Google/Meta both
 check for these pages), have someone qualified confirm they match what the
 business actually does with collected data.
+
+---
+
+## 7. Restaurant directory prototype (`/restaurants`, `/wishlist`, `/signup`)
+
+This is a working demo, not a launched feature — everything functions (search,
+filtering, wishlist, a signup flow), but it's deliberately built on fake data
+and a non-functional account system, and is `noindex`ed / excluded from the
+sitemap in `robots.ts` for that reason. Shipping fake restaurant listings or a
+fake signup to search engines would work against SEO/GEO trust, not for it.
+
+To make this real:
+
+- [ ] **Decide the actual purpose** — is this a permanent public directory
+      (attracts diners, a different audience than the rest of the site), a
+      sales demo you show prospects, or an internal prospecting tool? That
+      decision changes the nav placement, the copy, and whether it should be
+      indexed at all.
+- [ ] **A real restaurant data source** — either a curated list of real,
+      permission-cleared listings (`content/restaurants.ts` already has the
+      typed shape to extend) or a live API (Yelp Fusion's free tier is the
+      standard no-cost option; Google Places works too but requires a billing
+      account even on its free usage tier).
+- [ ] **A real account system**, if persistent cross-device wishlists matter —
+      the current wishlist is `localStorage` only (device-local, no login).
+      Auth.js (free/open source) + Supabase's free tier (auth + Postgres
+      together, no cost) is the standard free pairing for this stack. Needs a
+      Supabase account created and its connection details added as env vars.
+- [ ] Once real data + real accounts exist, remove `/restaurants`, `/wishlist`,
+      and `/signup` from the `disallow` list in `src/app/robots.ts` and add
+      the real routes to `src/app/sitemap.ts`.
